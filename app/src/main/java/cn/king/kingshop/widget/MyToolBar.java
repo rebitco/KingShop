@@ -57,8 +57,8 @@ public class MyToolBar extends Toolbar {
 
             boolean isShowSearchView = a.getBoolean(R.styleable.MyToolBar_isShowSearchView,false);
 
-            if(isShowSearchView){//如果显示搜索栏 , 那就隐藏title
-                showSearchView();
+            if(isShowSearchView){//这里根据页面需求来展示, 如果布局设置app:isShowSearchView="true",则显示searchview
+                showSearchView();//如果设置为false , 则设置app:title="文本内容" ,就显示title文本内容
                 hideTitle();
             }
 

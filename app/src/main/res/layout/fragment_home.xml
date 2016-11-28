@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <cn.king.kingshop.widget.MyToolBar
@@ -10,6 +11,25 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:isShowSearchView="true"/>
+        app:isShowSearchView="true"
+        />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:layout_alignParentBottom="true"
+            android:id="@+id/custom_indicator"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            style="@style/AndroidImageSlider_Corner_Oval_Orange"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
