@@ -44,20 +44,30 @@ public class OkHttpHelper {
     private OkHttpHelper() {
         mOkHttpClient = new OkHttpClient();
         mOkHttpClient.setConnectTimeout(10, TimeUnit.SECONDS);
-        mOkHttpClient.setWriteTimeout(10, TimeUnit.SECONDS);
+        mOkHttpClient.setReadTimeout(10, TimeUnit.SECONDS);
         mOkHttpClient.setWriteTimeout(30, TimeUnit.SECONDS);//30秒
 
         mGson = new Gson();
 
         mHandler = new Handler(Looper.getMainLooper());
-    }
+    };
 
     public static OkHttpHelper getInstance() {
         return mInstance;
     }
 
     public void get(String url, Map<String, Object> param, BaseCallback callback) {
+        Request request = buildGetRequest(url, param);
+        request(request, callback);
+    }
 
+    public void get(String url, BaseCallback callback) {
+        get(url, null, callback); //GET请求 , 没有参数的时候调用
+    }
+
+    public void post(String url, Map<String, Object> params, BaseCallback callback) {
+        Request request = buildPostRequest(url, params);
+        request(request, callback);
     }
 
     public void request(final Request request, final BaseCallback callback) {
@@ -73,7 +83,7 @@ public class OkHttpHelper {
                 callbackResponse(callback, response);
                 if(response.isSuccessful()) {
                     String resultStr = response.body().string();
-                    Logger.d("result=" + resultStr);
+                    Logger.json(resultStr);
 
                     if(callback.mType == String.class) {
                         callbackSuccess(callback, response, resultStr);
@@ -142,10 +152,10 @@ public class OkHttpHelper {
     }
 
     private Request buildPostRequest(String url, Map<String, Object> params) {
-        return null;
+        return buildRequest(url, HttpMethodType.POST, params);
     }
     private Request buildGetRequest(String url, Map<String, Object> params) {
-        return null;
+        return buildRequest(url, HttpMethodType.GET, params);
     }
     private Request buildRequest(String url, HttpMethodType methodType, Map<String, Object> params) {
         Request.Builder builder = new Request.Builder().url(url);
@@ -177,7 +187,7 @@ public class OkHttpHelper {
         }
         String s = sb.toString();
         if(s.endsWith("&")) {
-            s.substring(0, s.length()-1);
+           s = s.substring(0, s.length()-1);
         }
         if(url.indexOf("?")>0) {
             url = url + "&" + s;
