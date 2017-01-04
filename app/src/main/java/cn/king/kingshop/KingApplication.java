@@ -16,6 +16,8 @@ import cn.king.kingshop.utils.UserLocalData;
 public class KingApplication extends Application {
     private User user;
 
+    private static Context context;
+
     private static KingApplication mInstance;
 
     public static KingApplication getInstance() {
@@ -26,11 +28,17 @@ public class KingApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        context = getApplicationContext();
+
         mInstance = this;
         initUser();
 
         Logger.init("KINGTAG");
 //        Logger.init("KINGTAG").logLevel(LogLevel.NONE);//打包上线时关闭所有打TAG
+    }
+
+    public static Context getContext() {
+        return context;
     }
 
     private void initUser() {
