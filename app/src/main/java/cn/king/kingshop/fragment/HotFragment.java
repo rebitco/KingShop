@@ -1,26 +1,35 @@
 package cn.king.kingshop.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.cjj.MaterialRefreshLayout;
+import com.lidroid.xutils.view.annotation.ViewInject;
+
+import cn.king.kingshop.R;
 
 /**
  * Created by Administrator on 2016/11/24.
  */
 
-public class HotFragment extends Fragment {
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView = new TextView(getContext());
-		textView.setText(getClass().getSimpleName());
-		textView.setTextColor(Color.BLACK);
+public class HotFragment extends BaseFragment {
 
-        return textView;
+    @ViewInject(R.id.refresh_view)
+    private MaterialRefreshLayout mRefreshView;
+    @ViewInject(R.id.recyclerview_hot)
+    private RecyclerView mRecyclerView;
+
+    @Override
+    public View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_hot, container, false);
+    }
+
+    @Override
+    public void init() {
+
     }
 }

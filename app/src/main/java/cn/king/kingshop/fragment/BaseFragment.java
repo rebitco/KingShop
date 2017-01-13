@@ -18,7 +18,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = createView(inflater, container, savedInstanceState);
-        ViewUtils.inject(this, view);
+        ViewUtils.inject(this, view);//初始化xutils
         init();
 
         return view;
