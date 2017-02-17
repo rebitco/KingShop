@@ -22,4 +22,9 @@
     <string name="pay_result">支付结果</string>
     <string name="add_addresses">新建收件地址</string>
     <string name="no_more_data">没有更多的数据了</string>
+    <string name="editor">编辑</string>
+    <string name="selected_all">全选</string>
+    <string name="total">合计</string>
+    <string name="pay">去结算</string>
+    <string name="delete">删除</string>
 </resources>

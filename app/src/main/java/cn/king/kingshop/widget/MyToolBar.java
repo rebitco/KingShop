@@ -92,9 +92,11 @@ public class MyToolBar extends Toolbar {
      */
     public void setRightButtonText(CharSequence text) {
         rightButton.setText(text);
+        showRightText();
     }
     public void setRightButtonText(int id) {
         setRightButtonText(getResources().getText(id));
+        showRightText();
     }
     public void setRightButton(Drawable icon) {
         if(rightButton != null) {
@@ -144,6 +146,12 @@ public class MyToolBar extends Toolbar {
     public void hideSearchView() {
         if(searchView != null) {
             searchView.setVisibility(View.GONE);
+        }
+    }
+
+    public void showRightText() {
+        if (rightButton != null) {
+            rightButton.setVisibility(View.VISIBLE);
         }
     }
 
