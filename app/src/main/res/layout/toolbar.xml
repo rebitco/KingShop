@@ -4,18 +4,18 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/toolbar_searchview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:drawableLeft="@mipmap/icon_search"
-        style="@style/search_view"
-        android:hint="请输入搜索内容"
-        android:visibility="gone"
-        />
+        <EditText
+            android:id="@+id/toolbar_searchview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/icon_search"
+            style="@style/search_view"
+            android:hint="请输入搜索内容"
+            android:visibility="gone"
+            />
 
     <TextView
         android:id="@+id/toolbar_title"

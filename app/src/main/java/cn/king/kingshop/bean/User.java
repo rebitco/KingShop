@@ -1,10 +1,12 @@
 package cn.king.kingshop.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by king on 2016/12/26.
  */
 
-public class User {
+public class User implements Serializable {
 
     private Long id;
     private String email;

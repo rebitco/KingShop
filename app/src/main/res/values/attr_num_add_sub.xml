@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="value" format="integer|reference"></attr>
+    <attr name="minVal" format="integer|reference"></attr>
+    <attr name="maxVal" format="integer|reference"></attr>
+
+    <attr name="addBtnBackground" format="reference"></attr>
+    <attr name="subBtnBackground" format="reference"></attr>
+    <attr name="textViewBackground" format="reference"></attr>
+
+    <declare-styleable name="NumAddSubView">
+        <attr name="value"></attr>
+        <attr name="minVal"></attr>
+        <attr name="maxVal"></attr>
+        <attr name="addBtnBackground"></attr>
+        <attr name="subBtnBackground"></attr>
+        <attr name="textViewBackground"></attr>
+    </declare-styleable>
+</resources>

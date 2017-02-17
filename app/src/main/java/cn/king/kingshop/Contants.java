@@ -26,7 +26,7 @@ public class Contants {
         public static final String BANNER_QUERY = BASE_URL + "banner/query";//首页banner
 
         public static final String WARES_HOT = BASE_URL + "wares/hot";//热门产品
-        public static final String WARES_LIST = BASE_URL + "wares/list";
+        public static final String WARES_LIST = BASE_URL + "wares/list";//分类产品
         public static final String WARE_CAMPAIGN_LIST = BASE_URL + "wares/campaign/list";
         public static final String WARE_DETAIL = BASE_URL + "wares/detail.html";
 

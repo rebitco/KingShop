@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <cn.king.kingshop.widget.MyToolBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:isShowSearchView="true"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/basicPaddingSize">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_category"
+            android:layout_width="@dimen/category_layout_width"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="2dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp">
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+                <com.daimajia.slider.library.Indicators.PagerIndicator
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/custom_indicator"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="6dp"
+                    style="@style/AndroidImageSlider_Corner_Oval_Orange"
+                    />
+            </RelativeLayout>
+
+            <com.cjj.MaterialRefreshLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                app:overlay="false"
+                app:wave_show="false"
+                app:wave_height_type="higher"
+                app:progress_show_circle_backgroud="false"
+                >
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </com.cjj.MaterialRefreshLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

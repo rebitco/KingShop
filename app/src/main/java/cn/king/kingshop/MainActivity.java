@@ -18,8 +18,6 @@ import cn.king.kingshop.fragment.HotFragment;
 import cn.king.kingshop.fragment.UserFragment;
 import cn.king.kingshop.widget.FragmentTabHost;
 
-import static android.R.id.list;
-
 public class MainActivity extends AppCompatActivity {
 
     private ImageView ivTabIcon;
@@ -69,4 +67,5 @@ public class MainActivity extends AppCompatActivity {
 
         return view;
     }
+
 }

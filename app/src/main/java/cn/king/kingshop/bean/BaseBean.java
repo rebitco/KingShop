@@ -1,10 +1,12 @@
 package cn.king.kingshop.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by king on 2016/11/28.
  */
 
-public class BaseBean {
+public class BaseBean implements Serializable {
 
     protected long id;
 

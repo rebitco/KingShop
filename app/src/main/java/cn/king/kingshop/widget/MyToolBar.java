@@ -43,7 +43,7 @@ public class MyToolBar extends Toolbar {
         initView();
         setContentInsetsRelative(10,10);//设置左右两边的间距
 
-        if(attrs !=null) {
+        if(attrs != null) {
             final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
                     R.styleable.MyToolBar, defStyleAttr, 0);
 
