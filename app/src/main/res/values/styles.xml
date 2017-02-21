@@ -70,7 +70,7 @@
     <!-- 热门商品的title -->
     <style name="wares_title">
         <item name="android:textColor">@color/gray</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -108,4 +108,7 @@
         <item name="android:background">@drawable/bg_btn_style_red</item>
     </style>
 
+    <style name="customCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/selector_checkbox</item>
+    </style>
 </resources>

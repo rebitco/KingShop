@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.TintTypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -52,13 +53,15 @@ public class NumAddSubView extends LinearLayout implements View.OnClickListener 
             int minVal = tta.getInt(R.styleable.NumAddSubView_minVal, 0);
             setMinVal(minVal);
             int maxVal = tta.getInt(R.styleable.NumAddSubView_maxVal, 0);
-            setMaxVal(maxVal);
+            if (maxVal != 0) {
+                setMaxVal(maxVal);
+            }
 
             Drawable drawableBtnAdd = tta.getDrawable(R.styleable.NumAddSubView_addBtnBackground);
             Drawable drawableBtnSub = tta.getDrawable(R.styleable.NumAddSubView_subBtnBackground);
             Drawable drawableTextView = tta.getDrawable(R.styleable.NumAddSubView_textViewBackground);
 
-            setBtnAddbtAdddBackground(drawableBtnAdd);
+            setBtnAddbtAddBackground(drawableBtnAdd);
             setBtnSubBackground(drawableBtnSub);
             setTextViewBackground(drawableTextView);
 
@@ -67,7 +70,7 @@ public class NumAddSubView extends LinearLayout implements View.OnClickListener 
 
     }
 
-    private void setBtnAddbtAdddBackground(Drawable drawable) {
+    private void setBtnAddbtAddBackground(Drawable drawable) {
         btAdd.setBackground(drawable);
     }
     private void setBtnSubBackground(Drawable drawable) {
@@ -107,6 +110,8 @@ public class NumAddSubView extends LinearLayout implements View.OnClickListener 
     }
 
     private void subNum() {
+        getValue();
+
         if(value > minVal) {
             value = value - 1;
             tvNumber.setText(value + "");
@@ -114,6 +119,8 @@ public class NumAddSubView extends LinearLayout implements View.OnClickListener 
     }
 
     private void addNum() {
+        getValue();
+
         if(value < maxVal) {
             value = value + 1;
             tvNumber.setText(value + "");
@@ -127,7 +134,12 @@ public class NumAddSubView extends LinearLayout implements View.OnClickListener 
     }
 
     public int getValue() {
-        return value;
+        String value = tvNumber.getText().toString();
+        if(value != null && !"".equals(value)) {
+            this.value = Integer.parseInt(value);
+        }
+
+        return this.value;
     }
 
     public void setValue(int value) {
@@ -149,5 +161,11 @@ public class NumAddSubView extends LinearLayout implements View.OnClickListener 
 
     public void setMinVal(int minVal) {
         this.minVal = minVal;
+    }
+
+    @Override
+    public boolean onInterceptHoverEvent(MotionEvent event) {
+
+        return false;
     }
 }

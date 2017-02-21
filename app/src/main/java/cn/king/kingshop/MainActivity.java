@@ -1,10 +1,12 @@
 package cn.king.kingshop;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentTabHost mTabHost;
     private List<Tab> mTabs = new ArrayList<>(5);
+
+    private CartFragment cartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,28 @@ public class MainActivity extends AppCompatActivity {
         for (Tab tab: mTabs) {
             mTabHost.addTab(mTabHost.newTabSpec(getString(tab.getTabText())).setIndicator(getTabView(tab)),
                     tab.getFragment(), null);
+        }
+
+        mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                if (tabId == getString(R.string.cart)) {
+                    //刷新购物车信息
+                    refreshCartData();
+                }
+            }
+        });
+    }
+
+    private void refreshCartData() {
+        if (cartFragment == null) {
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string.cart));
+            if (fragment != null) {
+                cartFragment = (CartFragment) fragment;
+                cartFragment.refreshData();
+            }
+        } else {
+            cartFragment.refreshData();
         }
     }
 

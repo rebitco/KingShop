@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -79,6 +80,7 @@ public class HotWaresAdapter extends RecyclerView.Adapter<HotWaresAdapter.ViewHo
         SimpleDraweeView draweeView;
         TextView tvTitle;
         TextView tvPrice;
+        Button btBuy;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -87,4 +89,5 @@ public class HotWaresAdapter extends RecyclerView.Adapter<HotWaresAdapter.ViewHo
             tvPrice = (TextView) itemView.findViewById(R.id.tv_price);
         }
     }
+
 }

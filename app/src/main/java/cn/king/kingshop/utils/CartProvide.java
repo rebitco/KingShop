@@ -33,6 +33,7 @@ public class CartProvide {
             temp.setCount(temp.getCount() + 1);
         } else {
             temp = cart;
+            temp.setCount(1);
         }
 
         datas.put(cart.getId().intValue(), temp);
@@ -101,4 +102,5 @@ public class CartProvide {
             }
         }
     }
+
 }
