@@ -28,17 +28,9 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
 
     public CartAdapter(Context context, List<ShoppingCart> carts, CheckBox cb, TextView tv) {
         super(context, R.layout.template_cart, carts);
-        this.checkBox = cb;
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //全选 全不选
-                checkAllChecked(checkBox.isChecked());
-                showTotalPrice();
-            }
-        });
 
-        this.textView = tv;
+        setCheckBox(cb);
+        setTextView(tv);
 
         mProvide = new CartProvide(context);
 
@@ -49,7 +41,9 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
 
     @Override
     public void convert(BaseViewHolder viewHolder, final ShoppingCart cart) {
-        viewHolder.getCheckBox(R.id.checkbox).setChecked(cart.isChecked());
+//        viewHolder.getCheckBox(R.id.checkbox).setChecked(cart.isChecked());
+        CheckBox checkBox = (CheckBox) viewHolder.getView(R.id.checkbox);
+        checkBox.setChecked(cart.isChecked());
 
         SimpleDraweeView sdv = (SimpleDraweeView) viewHolder.getView(R.id.drawee_view);
         sdv.setImageURI(cart.getImgUrl());
@@ -92,7 +86,7 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
 
     }
 
-    private void showTotalPrice() {
+    public void showTotalPrice() {
         float total = getTotalPrice();
         textView.setText(Html.fromHtml("合计 ￥<span style='color:#eb4f38'>" + total + "</span>"), TextView.BufferType.SPANNABLE);
     }
@@ -100,7 +94,7 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
     @Override
     public void onItemClick(View view, int position) {
         ShoppingCart item = getItem(position);
-        checkBox.setChecked(!item.isChecked());//取反
+        item.setIsChecked(!item.isChecked());
         notifyItemChanged(position);//更新数据
 
         checkQueue();
@@ -131,10 +125,27 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
 
             int i = 0;
             for(ShoppingCart cart : mDatas) {
-                cart.setChecked(isCkecked);
+                cart.setIsChecked(isCkecked);
                 notifyItemChanged(i);
                 i ++;
             }
         }
+    }
+
+    public void setTextView(TextView textView) {
+        this.textView = textView;
+    }
+
+    public void setCheckBox(CheckBox cb) {
+        this.checkBox = cb;
+
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //全选 全不选
+                checkAllChecked(checkBox.isChecked());
+                showTotalPrice();
+            }
+        });
     }
 }

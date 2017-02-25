@@ -65,6 +65,7 @@ public class CartFragment extends BaseFragment {
         mCartAdapter.clear();
         List<ShoppingCart> datas = mCartProvide.getAll();
         mCartAdapter.addData(datas);
+        mCartAdapter.showTotalPrice();//这个一定要调用,添加到购物车后,切换到购物车的合计才会刷新,因为切换Tab只调用refreshData(),不会调用CartFragment的init();
     }
 
 }
