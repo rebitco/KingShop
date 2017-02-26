@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.king.kingshop.bean.ShoppingCart;
+import cn.king.kingshop.bean.Wares;
 
 /**
  * Created by king on 2017/2/10.
@@ -22,7 +23,7 @@ public class CartProvide {
     private final String CART_JSON = "cart_json";
 
     public CartProvide(Context context) {
-        datas = new SparseArray<>();
+        datas = new SparseArray<>(10);
         mContext = context;
         listToSparseArray();
     }
@@ -42,6 +43,7 @@ public class CartProvide {
 
     public void delete(ShoppingCart cart) {
         datas.delete(cart.getId().intValue());
+        commit();
     }
 
     public void update(ShoppingCart cart) {
@@ -101,6 +103,26 @@ public class CartProvide {
                 datas.put(cart.getId().intValue(), cart);
             }
         }
+    }
+
+
+    /**
+     * ware 与 shoppingcart互转
+     * @param ware
+     */
+    public void put(Wares ware) {
+        ShoppingCart cart = convertData(ware);
+        put(cart);
+    }
+    private ShoppingCart convertData(Wares ware) {
+        ShoppingCart cart = new ShoppingCart();
+        cart.setId(ware.getId());
+        cart.setName(ware.getName());
+        cart.setPrice(ware.getPrice());
+        cart.setDescription(ware.getDescription());
+        cart.setImgUrl(ware.getImgUrl());
+
+        return cart;
     }
 
 }

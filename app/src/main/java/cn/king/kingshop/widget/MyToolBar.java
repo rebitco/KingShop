@@ -111,6 +111,10 @@ public class MyToolBar extends Toolbar {
         rightButton.setOnClickListener(listener);
     }
 
+    public Button getRightButton() {
+        return this.rightButton;
+    }
+
     @Override
     public void setTitle(@StringRes int resId) {
         setTitle(getContext().getText(resId));

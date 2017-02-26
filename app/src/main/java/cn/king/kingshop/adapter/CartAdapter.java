@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.Iterator;
 import java.util.List;
 
 import cn.king.kingshop.BaseViewHolder;
@@ -120,7 +121,7 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
         }
     }
 
-    private void checkAllChecked(boolean isCkecked) {
+    public void checkAllChecked(boolean isCkecked) {
         if(mDatas != null && mDatas.size() > 0) {
 
             int i = 0;
@@ -147,5 +148,31 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
                 showTotalPrice();
             }
         });
+    }
+
+    public void deleteItemData() {
+//        if (mDatas != null && mDatas.size() > 0) {
+//            for(ShoppingCart cart : mDatas) {
+//                if(cart.isChecked()) {
+//                    int position = mDatas.indexOf(cart);
+//                    mProvide.delete(cart);
+//                    mDatas.remove(cart);
+//                    notifyItemRemoved(position);
+//                }
+//            }
+//        }
+
+        if(mDatas.size() > 0 && mDatas != null) {
+            for(Iterator iterator = mDatas.iterator(); iterator.hasNext();) {
+                ShoppingCart cart = (ShoppingCart) iterator.next();
+                if(cart.isChecked()) {
+                    int position = mDatas.indexOf(cart);
+                    mProvide.delete(cart);
+                    iterator.remove();
+                    notifyItemRemoved(position);
+                }
+            }
+        }
+
     }
 }
