@@ -29,4 +29,9 @@
     <string name="delete">删除</string>
     <string name="addCart">已加入购物车</string>
     <string name="complete">完成</string>
+    <string name="shoplist">商品列表</string>
+    <string name="defaultval">默认</string>
+    <string name="sales">销量</string>
+    <string name="price">价格</string>
+
 </resources>

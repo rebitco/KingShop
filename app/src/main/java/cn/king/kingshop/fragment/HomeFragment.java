@@ -1,5 +1,6 @@
 package cn.king.kingshop.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import cn.king.kingshop.Contants;
 import cn.king.kingshop.R;
+import cn.king.kingshop.ShopListActivity;
 import cn.king.kingshop.adapter.HomeCategoryAdapter;
 import cn.king.kingshop.adapter.decoration.CardViewDecoration;
 import cn.king.kingshop.bean.Banner;
@@ -95,7 +97,8 @@ public class HomeFragment extends BaseFragment implements BaseSliderView.OnSlide
             @Override
             public void onClick(View v, Campaign campaign) {
                 //点击跳转
-                //TODO
+                Intent intent = new Intent(getContext(), ShopListActivity.class);
+                startActivity(intent);
             }
         });
 

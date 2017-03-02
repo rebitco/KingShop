@@ -40,7 +40,7 @@ public class HWAdapter extends SimpleAdapter<Wares> {
             @Override
             public void onClick(View v) {
 
-                mProvide.put(convertData(ware));
+                mProvide.put(ware);
 
                 Toast.makeText(mContext, R.string.addCart, Toast.LENGTH_SHORT).show();
             }
