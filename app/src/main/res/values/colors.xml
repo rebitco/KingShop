@@ -34,4 +34,7 @@
 
     <color name="grey">#AAAAAA</color>
 
+    <!-- 金黄色 -->
+    <color name="goldyellow">#ff9428</color>
+
 </resources>

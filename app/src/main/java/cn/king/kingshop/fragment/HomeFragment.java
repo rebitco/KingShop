@@ -98,6 +98,7 @@ public class HomeFragment extends BaseFragment implements BaseSliderView.OnSlide
             public void onClick(View v, Campaign campaign) {
                 //点击跳转
                 Intent intent = new Intent(getContext(), ShopListActivity.class);
+                intent.putExtra(Contants.CAMPAIGN_ID,campaign.getId());
                 startActivity(intent);
             }
         });

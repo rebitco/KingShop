@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@mipmap/icon_back_32px"
         app:title="@string/cart"
         app:rightButtonText="@string/editor"
         android:layout_alignParentTop="true"/>
