@@ -28,7 +28,7 @@ import cn.king.kingshop.widget.MyToolBar;
  * Created by king on 2017/2/28.
  */
 
-public class ShopListActivity extends AppCompatActivity implements Pager.OnPageListener<Wares> {
+public class ShopListActivity extends AppCompatActivity implements Pager.OnPageListener<Wares>, TabLayout.OnTabSelectedListener {
 
     @ViewInject(R.id.tab_indicator)
     private TabLayout mTabLayout;
@@ -43,8 +43,12 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
 
     private long campaignId;
     private int orderBy = 0;
+    private static final int TAG_DEFAULT = 0;
+    private static final int TAG_SALES = 1;
+    private static final int TAG_PRICE = 2;
 
     private HWAdapter mAdapter;
+    private Pager pager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +67,7 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                ShopListActivity.this.finish();
             }
         });
     }
@@ -71,20 +75,25 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
     private void initTab() {
         TabLayout.Tab tabDefault = mTabLayout.newTab();
         tabDefault.setText(R.string.defaultval);
+        tabDefault.setTag(TAG_DEFAULT);
         mTabLayout.addTab(tabDefault);
 
         TabLayout.Tab tabSale = mTabLayout.newTab();
         tabSale.setText(R.string.sales);
+        tabSale.setTag(TAG_SALES);
         mTabLayout.addTab(tabSale);
 
         TabLayout.Tab tabPrice = mTabLayout.newTab();
         tabPrice.setText(R.string.price);
+        tabPrice.setTag(TAG_PRICE);
         mTabLayout.addTab(tabPrice);
+
+        mTabLayout.addOnTabSelectedListener(this);//tab切换监听事件
 
     }
 
     private void initData() {
-        Pager pager = Pager.newBuild().setUrl(Contants.API.WARE_CAMPAIGN_LIST)
+        pager = Pager.newBuild().setUrl(Contants.API.WARE_CAMPAIGN_LIST)
                                         .putParam("campaignId", campaignId)
                                         .putParam("orderBy", orderBy)
                                         .setOnPageListener(this)
@@ -111,11 +120,29 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
 
     @Override
     public void refresh(List<Wares> datas, int totalPage, int totalCount) {
-
+        mAdapter.refreshData(datas);
+        mRecyclerView.scrollToPosition(0);
     }
 
     @Override
     public void loadMore(List<Wares> datas, int totalPage, int totalCount) {
+        mAdapter.refreshData(datas);
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        orderBy = (int) tab.getTag();
+        pager.putParam("orderBy", orderBy);
+        pager.request();
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
 
     }
 }

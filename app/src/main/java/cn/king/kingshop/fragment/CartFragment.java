@@ -1,5 +1,6 @@
 package cn.king.kingshop.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.List;
 
+import cn.king.kingshop.MainActivity;
 import cn.king.kingshop.R;
 import cn.king.kingshop.adapter.CartAdapter;
 import cn.king.kingshop.adapter.decoration.DividerItemDecoration;
@@ -68,6 +70,14 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
     private void changeToolbar() {
         mToolBar.setRightButtonOnClickListener(this);
         mToolBar.getRightButton().setTag(STATE_EDIT);
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
+
+        //添加右边按钮
     }
 
 

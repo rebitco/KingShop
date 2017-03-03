@@ -104,7 +104,7 @@ public class MyToolBar extends Toolbar {
             rightButton.setVisibility(View.VISIBLE);
         }
     }
-    public void setRightButton(int resId) {
+    public void setRightButtonIcon(int resId) {
         setRightButton(getResources().getDrawable(resId));
     }
     public void setRightButtonOnClickListener(OnClickListener listener) {
