@@ -57,4 +57,10 @@ public class HWAdapter extends SimpleAdapter<Wares> {
 
         return cart;
     }
+
+    public void resetLayout(int layoutId) {
+        this.mLayoutResId = layoutId;
+
+        notifyItemRangeChanged(0,getDatas().size());//修改界面的布局,从第一个到最后一个(所有)
+    }
 }

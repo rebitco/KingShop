@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,7 +29,7 @@ import cn.king.kingshop.widget.MyToolBar;
  * Created by king on 2017/2/28.
  */
 
-public class ShopListActivity extends AppCompatActivity implements Pager.OnPageListener<Wares>, TabLayout.OnTabSelectedListener {
+public class ShopListActivity extends AppCompatActivity implements Pager.OnPageListener<Wares>, TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     @ViewInject(R.id.tab_indicator)
     private TabLayout mTabLayout;
@@ -46,6 +47,9 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
     private static final int TAG_DEFAULT = 0;
     private static final int TAG_SALES = 1;
     private static final int TAG_PRICE = 2;
+
+    private static final int LIST_SINGLE = 0;
+    private static final int LIST_GRID = 1;
 
     private HWAdapter mAdapter;
     private Pager pager;
@@ -70,6 +74,10 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
                 ShopListActivity.this.finish();
             }
         });
+
+        mToolBar.setRightButtonIcon(R.mipmap.icon_grid_32);
+        mToolBar.setTag(LIST_SINGLE);
+        mToolBar.setRightButtonOnClickListener(this);
     }
 
     private void initTab() {
@@ -144,5 +152,22 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        int tag = (int) v.getTag();
+        if (tag == LIST_SINGLE) {
+            mToolBar.getRightButton().setTag(LIST_SINGLE);
+            mToolBar.setRightButtonIcon(R.mipmap.icon_grid_32);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            mAdapter.resetLayout(R.layout.template_hot);
+
+        } else if(tag == LIST_GRID) {
+            mToolBar.getRightButton().setTag(LIST_GRID);
+            mToolBar.setRightButtonIcon(R.mipmap.icon_list_32);
+            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            mAdapter.resetLayout(R.layout.template_grid_wares);
+        }
     }
 }

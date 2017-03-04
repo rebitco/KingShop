@@ -20,7 +20,7 @@ public abstract class BaseAdapter<T, H extends BaseViewHolder> extends RecyclerV
 
     protected List<T> mDatas;
     protected Context mContext;
-    protected int mLayoutResId;
+    public int mLayoutResId;
 
     public BaseAdapter(Context context, int layoutResId) {
         this(context, layoutResId, null);
