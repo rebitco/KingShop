@@ -20,7 +20,7 @@ public abstract class BaseAdapter<T, H extends BaseViewHolder> extends RecyclerV
 
     protected List<T> mDatas;
     protected Context mContext;
-    public int mLayoutResId;
+    protected int mLayoutResId;
 
     public BaseAdapter(Context context, int layoutResId) {
         this(context, layoutResId, null);
@@ -33,7 +33,7 @@ public abstract class BaseAdapter<T, H extends BaseViewHolder> extends RecyclerV
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(mLayoutResId, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(mLayoutResId, parent, false);
         BaseViewHolder viewHolder = new BaseViewHolder(view, mListener);
 
         return viewHolder;

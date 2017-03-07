@@ -60,7 +60,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void init() {
 
-        mCartProvide = new CartProvide(getContext());
+        mCartProvide = CartProvide.getCartProvide();
         list = mCartProvide.getAll();
         mCartAdapter = new CartAdapter(getContext(), list, mCheckBox, mTextView);
         showData();

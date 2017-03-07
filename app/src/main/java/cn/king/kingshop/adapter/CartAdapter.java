@@ -33,7 +33,7 @@ public class CartAdapter extends SimpleAdapter<ShoppingCart> implements BaseAdap
         setCheckBox(cb);
         setTextView(tv);
 
-        mProvide = new CartProvide(context);
+        mProvide = CartProvide.getCartProvide();
 
         setOnItemClickListener(this);
 

@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.king.kingshop.KingApplication;
 import cn.king.kingshop.bean.ShoppingCart;
 import cn.king.kingshop.bean.Wares;
 
@@ -17,16 +18,26 @@ import cn.king.kingshop.bean.Wares;
 
 public class CartProvide {
 
+    private static CartProvide cartProvide = null;
     private SparseArray<ShoppingCart> datas = null;
 
     private Context mContext;
     private final String CART_JSON = "cart_json";
 
-    public CartProvide(Context context) {
-        datas = new SparseArray<>(10);
+    private CartProvide(Context context) {
         mContext = context;
+        datas = new SparseArray<>(10);
         listToSparseArray();
     }
+
+    public static CartProvide getCartProvide() {
+        if(cartProvide == null) {
+            cartProvide = new CartProvide(KingApplication.getContext());
+        }
+
+        return cartProvide;
+    }
+
 
     public void put(ShoppingCart cart) {
         ShoppingCart temp = datas.get(cart.getId().intValue());//生成一个临时对象

@@ -42,7 +42,7 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
     @ViewInject(R.id.txt_summary)
     private TextView tvSummary;
 
-    private long campaignId;
+    private long campaignId = 0;
     private int orderBy = 0;
     private static final int TAG_DEFAULT = 0;
     private static final int TAG_SALES = 1;
@@ -76,7 +76,7 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
         });
 
         mToolBar.setRightButtonIcon(R.mipmap.icon_grid_32);
-        mToolBar.setTag(LIST_SINGLE);
+        mToolBar.getRightButton().setTag(LIST_SINGLE);
         mToolBar.setRightButtonOnClickListener(this);
     }
 
@@ -134,7 +134,7 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
 
     @Override
     public void loadMore(List<Wares> datas, int totalPage, int totalCount) {
-        mAdapter.refreshData(datas);
+        mAdapter.loadMoreData(datas);
     }
 
     @Override
@@ -157,17 +157,21 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
     @Override
     public void onClick(View v) {
         int tag = (int) v.getTag();
-        if (tag == LIST_SINGLE) {
-            mToolBar.getRightButton().setTag(LIST_SINGLE);
-            mToolBar.setRightButtonIcon(R.mipmap.icon_grid_32);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-            mAdapter.resetLayout(R.layout.template_hot);
-
-        } else if(tag == LIST_GRID) {
-            mToolBar.getRightButton().setTag(LIST_GRID);
+        if (LIST_SINGLE == tag) {
             mToolBar.setRightButtonIcon(R.mipmap.icon_list_32);
-            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            mToolBar.getRightButton().setTag(LIST_GRID);
+
             mAdapter.resetLayout(R.layout.template_grid_wares);
+            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            mRecyclerView.setAdapter(mAdapter);
+
+        } else if(LIST_GRID == tag) {
+            mToolBar.setRightButtonIcon(R.mipmap.icon_grid_32);
+            mToolBar.getRightButton().setTag(LIST_SINGLE);
+
+            mAdapter.resetLayout(R.layout.template_hot);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+            mRecyclerView.setAdapter(mAdapter);
         }
     }
 }

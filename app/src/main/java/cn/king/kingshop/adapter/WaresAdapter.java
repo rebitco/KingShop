@@ -28,7 +28,7 @@ public class WaresAdapter extends SimpleAdapter<Wares> {
         SimpleDraweeView sdv = (SimpleDraweeView) viewHolder.getView(R.id.drawee_view);
         sdv.setImageURI(Uri.parse(item.getImgUrl()));//商品图片
 
-        viewHolder.getTextView(R.id.ware_title).setText(item.getName());//商品标题
-        viewHolder.getTextView(R.id.ware_price).setText("￥" + item.getPrice());//商品价格
+        viewHolder.getTextView(R.id.tv_title).setText(item.getName());//商品标题
+        viewHolder.getTextView(R.id.tv_price).setText("￥" + item.getPrice());//商品价格
     }
 }
