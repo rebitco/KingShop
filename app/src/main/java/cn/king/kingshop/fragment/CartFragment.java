@@ -16,7 +16,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.List;
 
-import cn.king.kingshop.MainActivity;
+import cn.king.kingshop.activity.MainActivity;
 import cn.king.kingshop.R;
 import cn.king.kingshop.adapter.CartAdapter;
 import cn.king.kingshop.adapter.decoration.DividerItemDecoration;
@@ -127,4 +127,6 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
     private void deleteItem(View v) {
         mCartAdapter.deleteItemData();
     }
+
+
 }

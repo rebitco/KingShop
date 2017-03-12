@@ -14,6 +14,9 @@ import cn.king.kingshop.bean.Wares;
 
 /**
  * Created by king on 2017/2/10.
+ *
+ * 单例模式（Singleton）：保证一个类仅有一个实例，并提供一个访问它的全局访问点
+ *
  */
 
 public class CartProvide {

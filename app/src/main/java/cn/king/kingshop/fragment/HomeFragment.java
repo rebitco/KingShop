@@ -21,7 +21,7 @@ import java.util.List;
 
 import cn.king.kingshop.Contants;
 import cn.king.kingshop.R;
-import cn.king.kingshop.ShopListActivity;
+import cn.king.kingshop.activity.ShopListActivity;
 import cn.king.kingshop.adapter.HomeCategoryAdapter;
 import cn.king.kingshop.adapter.decoration.CardViewDecoration;
 import cn.king.kingshop.bean.Banner;

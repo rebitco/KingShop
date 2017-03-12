@@ -1,4 +1,4 @@
-package cn.king.kingshop;
+package cn.king.kingshop.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.king.kingshop.R;
 import cn.king.kingshop.bean.Tab;
 import cn.king.kingshop.fragment.CartFragment;
 import cn.king.kingshop.fragment.CatagoryFragment;
@@ -94,4 +96,16 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
+    private long time = 0;
+    @Override
+    public void onBackPressed() {
+        if(System.currentTimeMillis() - time > 2000) {
+            Toast.makeText(this, "再按一次试试?", Toast.LENGTH_SHORT).show();
+            time = System.currentTimeMillis();
+
+            return;
+        }
+
+        finish();
+    }
 }

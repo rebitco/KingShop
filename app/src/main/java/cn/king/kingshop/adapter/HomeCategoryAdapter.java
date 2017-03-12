@@ -115,23 +115,29 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
      * cardView点击的动画(涟漪效果)
      * @param v
      */
+    private int index = 0;
     private void anim(final View v) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(v, "rotationY", 0.0F, 360.0F)
                                     .setDuration(1000);
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                HomeCampaign homeCampaign = mDatas.get(mHolder.getLayoutPosition());
-                switch (v.getId()) {
-                   case R.id.imgview_big:
-                        mListener.onClick(v, homeCampaign.getCpOne());
-                       break;
-                   case R.id.imgview_small_top:
-                        mListener.onClick(v, homeCampaign.getCpTwo());
-                       break;
-                   case R.id.imgview_small_bottom:
-                        mListener.onClick(v, homeCampaign.getCpThree());
-                       break;
+                notifyDataSetChanged();//需要先刷新一下数据, 才能获取到最新的对应位置
+                index = mHolder.getLayoutPosition();
+                if(index <= mDatas.size() && index > 0){
+
+                    HomeCampaign homeCampaign = mDatas.get(index);
+                    switch (v.getId()) {
+                        case R.id.imgview_big:
+                            mListener.onClick(v, homeCampaign.getCpOne());
+                            break;
+                        case R.id.imgview_small_top:
+                            mListener.onClick(v, homeCampaign.getCpTwo());
+                            break;
+                        case R.id.imgview_small_bottom:
+                            mListener.onClick(v, homeCampaign.getCpThree());
+                            break;
+                    }
                 }
             }
         });

@@ -1,4 +1,4 @@
-package cn.king.kingshop;
+package cn.king.kingshop.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,6 +18,8 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 
 import java.util.List;
 
+import cn.king.kingshop.Contants;
+import cn.king.kingshop.R;
 import cn.king.kingshop.adapter.HWAdapter;
 import cn.king.kingshop.adapter.decoration.DividerItemDecoration;
 import cn.king.kingshop.bean.Page;
