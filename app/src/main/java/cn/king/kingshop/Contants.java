@@ -8,7 +8,7 @@ public class Contants {
 
     public static final String CAMPAIGN_ID = "campaign_id";
 
-    public static final String COMPAINGAIN_ID="compaigin_id";;
+    public static final String COMPAINGAIN_ID="compaigin_id";
     public static final String WARE="ware";
 
     public static final String USER_JSON = "user_json";

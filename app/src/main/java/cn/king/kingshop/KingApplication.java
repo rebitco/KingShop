@@ -9,6 +9,7 @@ import com.orhanobut.logger.Logger;
 
 import cn.king.kingshop.bean.User;
 import cn.king.kingshop.utils.UserLocalData;
+import cn.sharesdk.framework.ShareSDK;
 
 /**
  * Created by king on 2016/12/20.
@@ -38,6 +39,8 @@ public class KingApplication extends Application {
 
         Logger.init("KINGTAG");
 //        Logger.init("KINGTAG").logLevel(LogLevel.NONE);//打包上线时关闭所有打TAG
+
+        ShareSDK.initSDK(this);
     }
 
     public static Context getContext() {

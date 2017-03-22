@@ -1,5 +1,6 @@
 package cn.king.kingshop.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import cn.king.kingshop.Contants;
 import cn.king.kingshop.R;
+import cn.king.kingshop.activity.WareDetailActivity;
 import cn.king.kingshop.adapter.BaseAdapter;
 import cn.king.kingshop.adapter.HWAdapter;
 import cn.king.kingshop.bean.Page;
@@ -72,12 +74,15 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener {
     }
 
     @Override
-    public void load(List datas, int totalPage, int totalCount) {
+    public void load(final List datas, int totalPage, int totalCount) {
         mAdapter = new HWAdapter(getContext(), datas);
         mAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                //TODO 点击跳转商品详情页
+                Intent intent = new Intent(getActivity(), WareDetailActivity.class);
+                intent.putExtra(Contants.WARE, mAdapter.getItem(position));
+                startActivity(intent);
+
             }
         });
 

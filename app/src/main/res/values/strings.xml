@@ -30,8 +30,12 @@
     <string name="addCart">已加入购物车</string>
     <string name="complete">完成</string>
     <string name="shoplist">商品列表</string>
+    <string name="shopdetail">商品详情</string>
+    <string name="shared">分享</string>
     <string name="defaultval">默认</string>
     <string name="sales">销量</string>
     <string name="price">价格</string>
+    <string name="requestError">请求出错: </string>
+    <string name="loadFail">加载数据失败</string>
 
 </resources>

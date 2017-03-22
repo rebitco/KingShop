@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.king.kingshop.R;
 import cn.king.kingshop.bean.Page;
 import cn.king.kingshop.http.OkHttpHelper;
 import cn.king.kingshop.http.SpotsCallback;
@@ -249,7 +250,7 @@ public class Pager {
         @Override
         public void onFailure(Request request, Exception e) {
             dismissDialog();//隐藏dialog
-            Toast.makeText(builder.mContext, "请求出错: "+e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(builder.mContext, UIUtils.getString(R.string.requestError)+e.getMessage(), Toast.LENGTH_LONG).show();
 
             if(state == STATE_REFRESH) {
                 builder.mRefreshLayout.finishRefresh();
@@ -270,7 +271,7 @@ public class Pager {
 
         @Override
         public void onError(Response response, int code, Exception e) {
-            Toast.makeText(builder.mContext, "加载数据失败", Toast.LENGTH_LONG).show();
+            Toast.makeText(builder.mContext, UIUtils.getString(R.string.loadFail), Toast.LENGTH_LONG).show();
 
             if(state == STATE_REFRESH) {
                 builder.mRefreshLayout.finishRefresh();
