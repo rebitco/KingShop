@@ -41,6 +41,7 @@
         </activity>
         <activity android:name=".activity.ShopListActivity"/>
         <activity android:name=".activity.WareDetailActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
 
         <!-- shared SDK -->
         <activity

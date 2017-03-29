@@ -1,6 +1,5 @@
 package cn.king.kingshop.http;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.squareup.okhttp.Request;
@@ -26,15 +25,11 @@ public abstract class SpotsCallback<T> extends SimpleCallback<T> {
     }
 
     public void showDialog() {
-        if (mContext instanceof Activity) {
             mDialog.show();
-        }
     }
 
     public void dismissDialog() {
-        if(mContext instanceof Activity) {
             mDialog.dismiss();
-        }
     }
 
     public void setLoadingMsg(int resId) {
@@ -44,9 +39,7 @@ public abstract class SpotsCallback<T> extends SimpleCallback<T> {
     //在请求网络前显示
     @Override
     public void onBeforeRequest(Request request) {
-        if(mContext instanceof Activity) {
             showDialog();
-        }
     }
 
     //在响应后结束显示

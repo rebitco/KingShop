@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.king.kingshop.KingApplication;
 import cn.king.kingshop.bean.ShoppingCart;
 import cn.king.kingshop.bean.Wares;
 
@@ -33,9 +32,9 @@ public class CartProvide {
         listToSparseArray();
     }
 
-    public static CartProvide getCartProvide() {
+    public static CartProvide getCartProvide(Context context) {
         if(cartProvide == null) {
-            cartProvide = new CartProvide(KingApplication.getContext());
+            cartProvide = new CartProvide(context);
         }
 
         return cartProvide;

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <cn.king.kingshop.widget.MyToolBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@mipmap/icon_back_32px"
+        app:title="@string/login"
+        android:layout_alignParentTop="true"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/selector_view_block"
+        android:padding="@dimen/largePadding">
+
+        <cn.king.kingshop.widget.ClearEditext
+            android:drawableLeft="@drawable/icon_telphone_32"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:id="@+id/et_telnum"
+            style="@style/editText_base"
+            android:hint="@string/telnum_input"/>
+
+        <View
+            style="@style/line_vertical"/>
+
+        <EditText
+            android:drawableLeft="@drawable/icon_lock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:id="@+id/et_pwd"
+            android:drawableRight="@drawable/icon_closeeye_32"
+            style="@style/editText_base"
+            android:hint="@string/pwd_input"/>
+        <View
+            style="@style/line_vertical"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/bigRedButton"
+            android:text="@string/margin_login"
+            android:layout_marginTop="40dp"
+            android:layout_margin="20dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/largePadding"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_reg"
+            android:text="@string/reg_num"
+            style="@style/heiti_text"
+           />
+        <TextView
+            android:id="@+id/tv_forgotpwd"
+            android:text="@string/forgot_pwd"
+            style="@style/heiti_text"
+            android:gravity="right"
+           />
+
+    </LinearLayout>
+
+</LinearLayout>

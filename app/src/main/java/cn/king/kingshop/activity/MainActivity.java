@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshCartData() {
+
         if (cartFragment == null) {
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string.cart));
             if (fragment != null) {

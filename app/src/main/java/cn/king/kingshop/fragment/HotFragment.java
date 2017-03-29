@@ -61,16 +61,17 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener {
 
 //        initRecyclerView();
 //        initRefresh();
+        if(!isRemoving()) {
+            Pager pager = Pager.newBuild()
+                    .setUrl(Contants.API.WARES_HOT)
+                    .setLoadMore(true)
+                    .setOnPageListener(this)
+                    .setPageSize(20)
+                    .setRefreshLayout(mRefreshView)
+                    .build(getContext(), new TypeToken<Page<Wares>>(){}.getType());
 
-        Pager pager = Pager.newBuild()
-                        .setUrl(Contants.API.WARES_HOT)
-                .setLoadMore(true)
-                .setOnPageListener(this)
-                .setPageSize(20)
-                .setRefreshLayout(mRefreshView)
-                .build(getContext(), new TypeToken<Page<Wares>>(){}.getType());
-
-        pager.request();
+            pager.request();
+        }
     }
 
     @Override
@@ -93,8 +94,8 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener {
 
     @Override
     public void refresh(List datas, int totalPage, int totalCount) {
-        mAdapter.refreshData(datas);
-        mRecyclerView.scrollToPosition(0);
+            mAdapter.refreshData(datas);
+            mRecyclerView.scrollToPosition(0);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class HWAdapter extends SimpleAdapter<Wares> {
 
     public HWAdapter(Context context, List<Wares> datas) {
         super(context, R.layout.template_hot, datas);
-        mProvide = CartProvide.getCartProvide();
+        mProvide = CartProvide.getCartProvide(context);
     }
 
     @Override

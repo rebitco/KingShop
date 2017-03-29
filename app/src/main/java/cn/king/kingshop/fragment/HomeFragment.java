@@ -98,9 +98,9 @@ public class HomeFragment extends BaseFragment implements BaseSliderView.OnSlide
             @Override
             public void onClick(View v, Campaign campaign) {
                 //点击跳转
-                Intent intent = new Intent(getContext(), ShopListActivity.class);
+                Intent intent = new Intent(getActivity(), ShopListActivity.class);
                 intent.putExtra(Contants.CAMPAIGN_ID,campaign.getId());
-                startActivity(intent);
+                HomeFragment.this.startActivity(intent);
             }
         });
 
@@ -110,6 +110,7 @@ public class HomeFragment extends BaseFragment implements BaseSliderView.OnSlide
     }
 
     private void requestBannerImg() {
+
         mHttpHelper.get(HttpUrl.BANNER_URL, new SpotsCallback<List<Banner>>(getActivity()) {
             @Override
             public void onSuccess(Response response, List<Banner> banners) {

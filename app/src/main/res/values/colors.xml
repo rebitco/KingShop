@@ -37,4 +37,8 @@
     <!-- 金黄色 -->
     <color name="goldyellow">#ff9428</color>
 
+    <color name="border_color">#a9b7b7</color>
+    <color name="deepblue">#3B3F4A</color>
+
+
 </resources>

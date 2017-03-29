@@ -125,7 +125,6 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
                 notifyDataSetChanged();//需要先刷新一下数据, 才能获取到最新的对应位置
                 index = mHolder.getLayoutPosition();
                 if(index <= mDatas.size() && index > 0){
-
                     HomeCampaign homeCampaign = mDatas.get(index);
                     switch (v.getId()) {
                         case R.id.imgview_big:

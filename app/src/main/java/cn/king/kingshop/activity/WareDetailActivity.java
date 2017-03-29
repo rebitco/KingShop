@@ -59,7 +59,7 @@ public class WareDetailActivity extends AppCompatActivity {
         initWebview();
         initToolbar();
 
-        cartProvide = CartProvide.getCartProvide();
+        cartProvide = CartProvide.getCartProvide(this);
         mDialog = new SpotsDialog(this);
     }
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/colorPrimary">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circle_header"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/icon_default_header"
+            android:layout_marginTop="12dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/gainsboro"/>
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="9dp"/>
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/usercenter"
+                android:id="@+id/tv_myorder"
+                android:text="@string/my_orders"
+                android:drawableLeft="@drawable/icon_list_o"
+                />
+
+            <View
+                style="@style/line_vertical"/>
+
+            <TextView
+                style="@style/usercenter"
+                android:id="@+id/tv_myfav"
+                android:text="@string/my_favorite"
+                android:drawableLeft="@drawable/icon_favorite"
+                />
+
+            <View
+                style="@style/line_vertical"/>
+
+            <TextView
+                style="@style/usercenter"
+                android:id="@+id/tv_add"
+                android:text="@string/my_addresses"
+                android:drawableLeft="@drawable/icon_location"
+                />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:text="@string/logout"
+                style="@style/bigRedButton"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
