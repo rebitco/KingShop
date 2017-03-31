@@ -17,7 +17,7 @@ import cn.king.kingshop.R;
 
 public class PasswordEditText extends AppCompatEditText implements View.OnTouchListener {
 
-    private boolean isTouch = false;
+    private boolean isTouch = true;
     private OnTouchListener mOnTouchListener;
 
     public PasswordEditText(Context context) {
@@ -36,7 +36,7 @@ public class PasswordEditText extends AppCompatEditText implements View.OnTouchL
     }
 
     public void init() {
-        setOnTouchListener(this);
+        super.setOnTouchListener(this);
     }
 
     @Override

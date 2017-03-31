@@ -22,4 +22,5 @@ public class CategoryAdapter extends SimpleAdapter<Category> {
     public void convert(BaseViewHolder viewHolder, Category item) {
         viewHolder.getTextView(R.id.text).setText(item.getName());
     }
+
 }

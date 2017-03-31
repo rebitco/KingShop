@@ -93,7 +93,6 @@ public class HomeFragment extends BaseFragment implements BaseSliderView.OnSlide
 
     private void initData(List<HomeCampaign> homeCampaigns) {
         mAdapter = new HomeCategoryAdapter(homeCampaigns, getActivity());
-        //TODO 这里的点击事件有问题
         mAdapter.setOnCampaignClickListener(new HomeCategoryAdapter.OnCampaignClickListener() {
             @Override
             public void onClick(View v, Campaign campaign) {

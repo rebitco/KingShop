@@ -36,7 +36,7 @@
         <View
             style="@style/line_vertical"/>
 
-        <EditText
+        <cn.king.kingshop.widget.PasswordEditText
             android:drawableLeft="@drawable/icon_lock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

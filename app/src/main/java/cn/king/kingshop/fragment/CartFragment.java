@@ -128,5 +128,8 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
         mCartAdapter.deleteItemData();
     }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

@@ -168,6 +168,7 @@ public class CatagoryFragment extends Fragment {
     }
 
     private void showCategoryData(final List<Category> categories) {
+
         mAdapter = new CategoryAdapter(getContext(), categories);
 
         mAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {

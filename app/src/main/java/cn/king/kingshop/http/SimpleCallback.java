@@ -8,6 +8,7 @@ import com.squareup.okhttp.Response;
 
 import cn.king.kingshop.KingApplication;
 import cn.king.kingshop.R;
+import cn.king.kingshop.activity.LoginActivity;
 import cn.king.kingshop.utils.ToastUtil;
 
 /**
@@ -41,7 +42,7 @@ public abstract class SimpleCallback<T> extends BaseCallback<T> {
         ToastUtil.show(mContext, R.string.token_error);
         //跳回登录页
         Intent intent = new Intent();
-        intent.setClass(mContext, null);//TODO
+        intent.setClass(mContext, LoginActivity.class);
         mContext.startActivity(intent);
 
         KingApplication.getInstance().clearUser();

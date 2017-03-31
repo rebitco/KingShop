@@ -1,30 +1,36 @@
 package cn.king.kingshop.activity;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.squareup.okhttp.Response;
 
+import java.util.HashMap;
+
+import cn.king.kingshop.Contants;
+import cn.king.kingshop.KingApplication;
 import cn.king.kingshop.R;
+import cn.king.kingshop.bean.User;
+import cn.king.kingshop.http.OkHttpHelper;
+import cn.king.kingshop.http.SpotsCallback;
+import cn.king.kingshop.msg.LoginRespMsg;
+import cn.king.kingshop.utils.DESUtil;
 import cn.king.kingshop.widget.ClearEditext;
 import cn.king.kingshop.widget.MyToolBar;
+import cn.king.kingshop.widget.PasswordEditText;
 
 /**
  * Created by king on 2017/3/28.
  */
 
-public class LoginActivity extends AppCompatActivity implements View.OnTouchListener {
+public class LoginActivity extends AppCompatActivity {
 
     @ViewInject(R.id.toolbar)
     private MyToolBar mToolbar;
@@ -32,7 +38,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
     @ViewInject(R.id.et_telnum)
     private ClearEditext cetTelnum;
     @ViewInject(R.id.et_pwd)
-    private EditText etPwd;
+    private PasswordEditText etPwd;
+
+    private OkHttpHelper mHttpHelp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,9 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
         setContentView(R.layout.activity_login);
         ViewUtils.inject(this);
 
-        etPwd.setOnTouchListener(this);
-
         initToolbar();
+        mHttpHelp = OkHttpHelper.getInstance();
     }
 
     private void initToolbar() {
@@ -71,6 +78,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
             Toast.makeText(this, R.string.pwd_notnull, Toast.LENGTH_SHORT).show();
             return;
         }
+
+        String url = Contants.API.LOGIN;
+        HashMap<String, Object> params = new HashMap<>(2);
+        params.put("telNum", userTelnum);
+        params.put("password", DESUtil.encode(Contants.DES_KEY, userPwd));
+        mHttpHelp.post(url, params, new SpotsCallback<LoginRespMsg<User>>(this) {
+
+            @Override
+            public void onSuccess(Response response, LoginRespMsg<User> userLoginRespMsg) {
+                KingApplication application = (KingApplication) getApplication();
+                application.putUser(userLoginRespMsg.getUser(), userLoginRespMsg.getToken());
+
+                if(application.getIntent() == null) {
+                    setResult(RESULT_OK);
+                    finish();
+                } else {
+                    application.gotoTargetActivity(LoginActivity.this);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onError(Response response, int code, Exception e) {
+
+            }
+        });
     }
 
     @Override
@@ -79,48 +112,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
         finish();
     }
 
-    /**
-     * 密码明文/密文处理
-     */
-    private boolean isTouch = false;
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN :
-                Drawable drawableRight = etPwd.getCompoundDrawables()[2];//长度为4的数组，分别表示左上右下四张图片
-
-                if(drawableRight == null && event.getAction() != MotionEvent.ACTION_UP) {
-                    return false;
-                }
-                if (event.getX() > etPwd.getWidth()
-                        - etPwd.getPaddingRight()
-                        - drawableRight.getIntrinsicWidth()){
-                    Drawable drawableLeft = getResources().getDrawable(R.drawable.icon_lock);
-                    drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
-                    if (isTouch) {
-                        etPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                        Drawable drawableOpenEye = getResources().getDrawable(R.drawable.icon_openeye_32);
-                        drawableOpenEye.setBounds(0, 0, drawableOpenEye.getMinimumWidth(), drawableOpenEye.getMinimumHeight());
-                        etPwd.setCompoundDrawables(drawableLeft, null, drawableOpenEye, null);
-                    } else {
-                        etPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                        Drawable drawableCloseEye = getResources().getDrawable(R.drawable.icon_closeeye_32);
-                        drawableCloseEye.setBounds(0, 0, drawableCloseEye.getMinimumWidth(), drawableCloseEye.getMinimumHeight());
-                        etPwd.setCompoundDrawables(drawableLeft, null, drawableCloseEye, null);
-                    }
-                    isTouch = !isTouch;
-                    etPwd.setSelection(etPwd.getText().toString().length());
-                }
-
-                break;
-            case MotionEvent.ACTION_MOVE :
-
-                break;
-            case MotionEvent.ACTION_UP :
-
-                break;
-        }
-
-        return false;
-    }
 }

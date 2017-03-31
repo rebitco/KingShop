@@ -27,7 +27,6 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
     private static final int VIEW_TYPE_RIGHT = 0;
     private static final int VIEW_TYPE_LEFT = 1;
-    private ViewHolder mHolder;
 
     private LayoutInflater mLayoutInflater;
     private Context mContext;
@@ -45,6 +44,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         mLayoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == VIEW_TYPE_RIGHT) {
             return new ViewHolder(mLayoutInflater.inflate(R.layout.template_home_cardview2, parent, false));
@@ -55,8 +55,6 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        this.mHolder = holder;
-
         HomeCampaign homeCampaign = mDatas.get(position);
         //标题
         holder.textTitle.setText(homeCampaign.getTitle());
@@ -109,23 +107,19 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
                 anim(v);
             }
         }
-    }
 
-    /**
-     * cardView点击的动画(涟漪效果)
-     * @param v
-     */
-    private int index = 0;
-    private void anim(final View v) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(v, "rotationY", 0.0F, 360.0F)
-                                    .setDuration(1000);
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                notifyDataSetChanged();//需要先刷新一下数据, 才能获取到最新的对应位置
-                index = mHolder.getLayoutPosition();
-                if(index <= mDatas.size() && index > 0){
-                    HomeCampaign homeCampaign = mDatas.get(index);
+        /**
+         * cardView点击的动画
+         *
+         * @param v
+         */
+        private void anim(final View v) {
+            ObjectAnimator animator = ObjectAnimator.ofFloat(v, "rotationY", 0.0F, 360.0F)
+                    .setDuration(800);
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    HomeCampaign homeCampaign = mDatas.get(getLayoutPosition());
                     switch (v.getId()) {
                         case R.id.imgview_big:
                             mListener.onClick(v, homeCampaign.getCpOne());
@@ -138,12 +132,12 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
                             break;
                     }
                 }
-            }
-        });
-        animator.start();
+            });
+            animator.start();
+        }
     }
 
     public interface OnCampaignClickListener {
-       void onClick(View v, Campaign campaign);
-   }
+        void onClick(View v, Campaign campaign);
+    }
 }
