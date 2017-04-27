@@ -47,4 +47,20 @@ dependencies {
     compile 'com.android.support:design:24.0.0'
     compile project(':sharesdk')
     compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    compile name:'SMSSDK-2.1.4',ext:'aar'
 }
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
+//# SMSSDK混淆
+//-dontwarn com.mob.**
+//        -keep class com.mob.**{*;}
+//
+//-dontwarn cn.smssdk.**
+//        -keep class cn.smssdk.**{*;}

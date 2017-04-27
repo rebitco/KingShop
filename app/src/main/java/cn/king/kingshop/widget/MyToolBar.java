@@ -129,6 +129,7 @@ public class MyToolBar extends Toolbar {
         }
     }
 
+
     public void showTitle() {
         if(tvTitle != null) {
             tvTitle.setVisibility(View.VISIBLE);

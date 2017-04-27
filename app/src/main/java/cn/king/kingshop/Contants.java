@@ -6,13 +6,14 @@ package cn.king.kingshop;
 
 public class Contants {
 
-    public static final String CAMPAIGN_ID = "campaign_id";
+    public static final String CAMPAIGN_ID = "campaigin_id";
 
     public static final String COMPAINGAIN_ID="compaigin_id";
     public static final String WARE="ware";
 
     public static final String USER_JSON = "user_json";
     public static final String TOKEN = "token";
+//    public static final String TOKEN = "1491798324.72##3d07e6945f01e6a3c2ef213199b1b6eabbdfc691";
 
     public  static final String DES_KEY="Cniao5_123456";
 
@@ -34,8 +35,8 @@ public class Contants {
 
         public static final String CATEGORY_LIST = BASE_URL + "category/list";
 
-        public static final String LOGIN = "auth/login";//登录
-        public static final String REG = "auth/reg";//注册
+        public static final String LOGIN = BASE_URL + "auth/login";//登录
+        public static final String REG = BASE_URL + "auth/reg";//注册
 
         public static final String USER_DETAIL = BASE_URL + "user/get?id=1";
 
@@ -52,6 +53,11 @@ public class Contants {
         //收藏
         public static final String FAVORITE_LIST= BASE_URL + "favorite/list";
         public static final String FAVORITE_CREATE= BASE_URL + "favorite/create";
+
     }
+
+    //SMS velification
+    public static final String SMS_APPKEY = "1caa2c2a0a277";
+    public static final String SMS_APPSECRECT = "d637aabaf8fa6faa3087eafb7cbde942";
 
 }

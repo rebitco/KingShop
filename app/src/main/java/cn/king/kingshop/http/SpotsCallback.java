@@ -5,6 +5,7 @@ import android.content.Context;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import cn.king.kingshop.R;
 import dmax.dialog.SpotsDialog;
 
 /**
@@ -21,7 +22,7 @@ public abstract class SpotsCallback<T> extends SimpleCallback<T> {
     }
 
     private void initSpotsDialog() {
-        mDialog = new SpotsDialog(mContext, "搏命加载中...");
+        mDialog = new SpotsDialog(mContext, R.string.super_loading);
     }
 
     public void showDialog() {

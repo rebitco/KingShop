@@ -3,7 +3,6 @@ package cn.king.kingshop.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +30,7 @@ import cn.king.kingshop.widget.MyToolBar;
  * Created by king on 2017/2/28.
  */
 
-public class ShopListActivity extends AppCompatActivity implements Pager.OnPageListener<Wares>, TabLayout.OnTabSelectedListener, View.OnClickListener {
+public class ShopListActivity extends BaseActivity implements Pager.OnPageListener<Wares>, TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     @ViewInject(R.id.tab_indicator)
     private TabLayout mTabLayout;
@@ -62,7 +61,7 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
         setContentView(R.layout.activity_shoplist);
         ViewUtils.inject(this);
 
-        campaignId = getIntent().getLongExtra(Contants.CAMPAIGN_ID, 0);
+        campaignId = getIntent().getLongExtra(Contants.COMPAINGAIN_ID, 0);
 
         initToolBar();
         initTab();
@@ -104,12 +103,12 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
 
     private void initData() {
         pager = Pager.newBuild().setUrl(Contants.API.WARE_CAMPAIGN_LIST)
-                                        .putParam("campaignId", campaignId)
-                                        .putParam("orderBy", orderBy)
-                                        .setOnPageListener(this)
-                                        .setLoadMore(true)
-                                        .setRefreshLayout(mRefreshLayout)
-                                        .build(this, new TypeToken<Page<Wares>>(){}.getType());
+                .putParam("campaignId", campaignId)
+                .putParam("orderBy", orderBy)
+                .setOnPageListener(this)
+                .setLoadMore(true)
+                .setRefreshLayout(mRefreshLayout)
+                .build(this, new TypeToken<Page<Wares>>(){}.getType());
         pager.request();
     }
 
@@ -163,6 +162,7 @@ public class ShopListActivity extends AppCompatActivity implements Pager.OnPageL
             mToolBar.setRightButtonIcon(R.mipmap.icon_list_32);
             mToolBar.getRightButton().setTag(LIST_GRID);
 
+            //TODO  数据为空的时候 , 点击切换出现空指针
             mAdapter.resetLayout(R.layout.template_grid_wares);
             mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
             mRecyclerView.setAdapter(mAdapter);

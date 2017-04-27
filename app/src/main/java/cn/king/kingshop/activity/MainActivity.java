@@ -2,7 +2,6 @@ package cn.king.kingshop.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,7 +21,7 @@ import cn.king.kingshop.fragment.HotFragment;
 import cn.king.kingshop.fragment.UserFragment;
 import cn.king.kingshop.widget.FragmentTabHost;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ImageView ivTabIcon;
     private TextView tvTabText;

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <cn.king.kingshop.widget.MyToolBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@mipmap/icon_back_32px"
+        app:title="@string/register"
+        android:layout_alignParentTop="true"
+        app:rightButtonText="@string/next_step"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/selector_view_block"
+        android:layout_marginTop="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country_or_area"
+                android:textColor="@color/black"
+                android:layout_alignParentLeft="true"/>
+            <TextView
+                android:id="@+id/tv_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/china"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <View
+            style="@style/line_vertical"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_countrycode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+86"
+                android:textColor="@color/black"
+                android:paddingRight="12dp"/>
+            <View
+                style="@style/line_horizontal"
+                />
+            <cn.king.kingshop.widget.ClearEditext
+                android:id="@+id/input_telnum"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                style="@style/editText_base"
+                android:inputType="phone"
+                android:paddingLeft="10dp"
+                android:hint="@string/telnum_input_ofen"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/line_vertical"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:paddingRight="8dp"/>
+            <View
+                style="@style/line_horizontal"/>
+
+            <cn.king.kingshop.widget.ClearEditext
+                android:id="@+id/input_pwd"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                style="@style/editText_base"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:hint="@string/input_pwd"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_btn_agreen"
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/tv_user_protocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_protocal"
+            android:textSize="12sp"
+            android:textColor="#4C8BF5"/>
+    </LinearLayout>
+
+</LinearLayout>

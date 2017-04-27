@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+
+    <cn.king.kingshop.widget.MyToolBar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@mipmap/icon_back_32px"
+        app:title="@string/secondreg"
+        android:layout_alignParentTop="true"
+        app:rightButtonText="@string/complete"/>
+
+    <TextView
+        android:id="@+id/txt_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/border_color"
+        android:textSize="12sp"
+        android:layout_marginTop="40dp"
+        android:padding="@dimen/largePadding"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="@dimen/largePadding"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            >
+
+            <cn.king.kingshop.widget.ClearEditext
+                android:id="@+id/edittxt_code"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                style="@style/editText_base"
+                android:hint="@string/input_verify"
+                android:inputType="number"
+                android:maxLength="4"/>
+
+
+            <Button
+                android:id="@+id/btn_reSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/smssdk_resend_identify_code"
+                style="@style/smallGreenButton"
+                android:enabled="false"
+                />
+        </LinearLayout>
+
+        <View
+            style="@style/line_vertical"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

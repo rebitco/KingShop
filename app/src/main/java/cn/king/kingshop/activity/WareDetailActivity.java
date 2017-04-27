@@ -3,7 +3,6 @@ package cn.king.kingshop.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
@@ -29,7 +28,7 @@ import dmax.dialog.SpotsDialog;
  * Created by king on 2017/3/15.
  */
 
-public class WareDetailActivity extends AppCompatActivity {
+public class WareDetailActivity extends BaseActivity {
     @ViewInject(R.id.webview)
     private WebView mWebView;
     @ViewInject(R.id.toolbar)

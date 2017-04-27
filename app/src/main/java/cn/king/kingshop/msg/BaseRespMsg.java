@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class BaseRespMsg implements Serializable {
 
     public static final int STATUS_SUCCESS = 1;
-    public static final int STATUS_EEROR = 0;
+    public static final int STATUS_ERROR = 0;
     public static final String MSG_SUCCESS = "success";
 
     protected int status = STATUS_SUCCESS;

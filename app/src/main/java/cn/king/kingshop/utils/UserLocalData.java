@@ -8,6 +8,7 @@ import cn.king.kingshop.bean.User;
 
 /**
  * Created by king on 2016/12/26.
+ * 将User信息保存到本地
  */
 
 public class UserLocalData {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KingShop</string>
+    <string name="app_name">金商城</string>
 
     <string name="home">主页</string>
     <string name="hot">热卖</string>
@@ -16,9 +16,15 @@
     <string name="logout">退出登录</string>
     <string name="login">登录</string>
     <string name="margin_login">登    录</string>
+    <string name="register">用户注册(1/2)</string>
+    <string name="secondreg">用户注册(2/2)</string>
+    <string name="next_step">下一步</string>
     <string name="telnum_input">请输入手机号码</string>
+    <string name="telnum_input_ofen">请输入常用手机号码</string>
     <string name="pwd_input">请输入登录密码</string>
+    <string name="input_pwd">请输入密码</string>
     <string name="reg_num">注册帐号</string>
+    <string name="password">密码</string>
     <string name="forgot_pwd">忘记密码?</string>
     <string name="to_login">点击登录</string>
     <string name="token_error">登录失效，请重新登录</string>
@@ -45,6 +51,29 @@
     <string name="loadFail">加载数据失败</string>
     <string name="telnum_notnull">手机号不能为空</string>
     <string name="pwd_notnull">密码不能为空</string>
+    <string name="pwd_tips">密码必须6-10位, 由大小写字母和数字混合组成</string>
     <string name="telnum_error">请填写正确的手机号</string>
+    <string name="super_loading">搏命加载中...</string>
+
+    <string name="country_or_area">国家或者地区</string>
+    <string name="china">中国</string>
+    <string name="next_btn_agreen">点击下一步按钮,表示你同意</string>
+    <string name="user_protocal"><Data><![CDATA[<font color="#4B8BF5"><b><u>&#060;&#060;金商城用户协议&#062;&#062;</u></b></font>]]></Data></string>
+    <string name="user_protocal_noline">&#060;&#060;金商城用户协议&#062;&#062;</string>
+    <string name="input_verify">请输入验证码</string>
+    <string name="smssdk_resend_identify_code">重新获取验证码</string>
+    <string name="later_resend">秒后可重新发送</string>
+    <string name="verifycode_notnull">验证码不能为空</string>
+    <string name="verifycode_doing">正在校验验证码</string>
+    <string name="submit_regmsg">正在提交注册信息</string>
+    <string name="review_getcode">正在重新获取验证码</string>
+    <string name="reg_error">注册失败</string>
+
+    <string name="protocal_file">
+        本协议由同意并承诺遵守本协议规定使用淘宝B2C服务的法律实体（下称“商户”或“甲方”）、淘宝（中国）软件有限公司（下称“乙方”）及浙江淘宝网络有限公司（下称“丙方”）共同缔结，本协议具有合同效力。  本协议中协议三方合称协议方，乙方及丙方合称“淘宝”。   1. 协议内容及生效：   （一）本协议内容包括协议正文及所有淘宝网已经发布的或将来可能发布的各类规则。所有规则为协议不可分割的一部分，与协议正文具有同等法律效力。淘宝将就淘宝B2C服务制定特别规则（下称“特别规则”），如特别规则与淘宝网其他规则存在冲突，则以特别规则为准。   （二）商户在使用淘宝提供的各项服务的同时，承诺接受并遵守各项相关规则的规定。淘宝有权根据需要不时地制定、修改本协议或各类规则，如本协议有任何变更，淘宝将在网站上以公示形式通知予商户。如商户不同意相关变更，必须立即以书面通知的方式终止本协议。任何修订和新规则一经在淘宝网公布即自动生效，成为本协议的一部分。登录或继续使用服务将表示商户接受经修订的协议。除另行明确声明外，任何使服务范围扩大或功能增强的新内容均受本协议约束。   （三）商户签署或在线接受本协议并不导致本协议立即生效，经过淘宝审核通过并向商户发出服务开通通知时，本协议即在商户和淘宝之间产生法律效力。本协议不涉及商户与淘宝网其它用户之间因网上交易而产生的法律关系及法律纠纷。   1. 定义：   “淘宝网”：指由淘宝提供技术支持和服务的电子商务平台网站，网址为
+        www.taobao.com.cn。   “淘宝网上交易平台”：指淘宝网上供用户发布或查询商品信息，进行信息交流，达成交易意向及向用户提供其他与交易有关的辅助信息服务的空间，有关淘宝网上交易平台上的术语或图示的含义，详见淘宝网“客服中心”有关内容。   “淘宝B2C平台”：又称“淘宝商城”，指淘宝网向商户提供服务的特定空间，其URL为：www.mall.taobao.com.cn（或依淘宝根据业务需要不时修改的URL），是淘宝网上交易平台的一部分。   “商户及商户注册”：商户必须是符合本协议第四条规定的法律实体，如无经营资格或违反本协议第五条之声明与保证的组织不当注册为淘宝商户或超越其民事权利或行为能力范围从事交易的，其与淘宝之间的协议自始无效，淘宝一经发现，有权立即注销该商户B2C服务帐户，并追究其使用淘宝网服务的一切法律责任。商户注册是指商户登陆淘宝网，按要求填写相关信息、在线接受并同意履行本协议以最终激活其淘宝B2C服务帐户的过程。   “淘宝B2C服务帐户”：又称“淘宝商城帐户”，即商户完成商户注册流程而获得的其将在使用服务的过程中必须与自设的帐户密码共同使用的用户名，又称“淘宝B2C用户名”或“淘宝商城用户名”。商户应妥善保管其淘宝B2C服务帐户及密码信息，商户不得以任何形式擅自转让或授权他人使用自己的淘宝B2C服务帐户；   “服务”：是指由乙方和/或丙方在淘宝B2C平台向商户提供的互联网信息发布、商业推广及与此有关的互联网技术服务。具体服务内容如下：   1. 网络信息服务：指商户根据本协议的规定利用淘宝网上交易平台查询商品信息、发布商品信息、作为卖方与其它用户订立商品买卖合同、评价其它用户的信用、参加淘宝的有关活动以及其他由淘宝同意提供的信息服务；  2．淘宝B2C平台活动推荐位服务：指淘宝B2C平台举办的商业推广活动页面中的推荐位展示服务；   3．三级域名服务：指商户经淘宝审核批准可使用的淘宝网域名下三级域名的服务，该服务必须遵照淘宝网颁布的有关三级域名的规则经淘宝审核通过方能开通使用。   4．积分推广服务：指由淘宝向商户提供的通过淘宝网平台实施的商业推广服务，具体规定见本协议第十一条。   5．店铺专用BBS服务：指由淘宝向商户提供的专用BBS空间，供商户发布与自销商品有关的信息，并收集淘宝网其他用户对其商品及服务的反馈。   6．其他服务：包括但不限于市场调研、商业推广、广告等服务，由协议方在《淘宝B2C服务条款》或补充协议中确定。
+    </string>
+
+    <string name="smssdk_send_mobile_detail"><Data>我们已发送&lt;font color=#209526>验证码&lt;/font>短信到这个号码:</Data></string>
 
 </resources>

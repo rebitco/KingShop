@@ -33,6 +33,7 @@
             style="@style/editText_base"
             android:hint="@string/telnum_input"/>
 
+
         <View
             style="@style/line_vertical"/>
 

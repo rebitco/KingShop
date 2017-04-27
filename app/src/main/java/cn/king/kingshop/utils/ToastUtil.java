@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class ToastUtil {
 
     public static void show(Context context, int resId) {
-        Toast.makeText(context, context.getResources().getText(resId), Toast.LENGTH_SHORT);
+        Toast.makeText(context, context.getResources().getText(resId), Toast.LENGTH_SHORT).show();
     }
 
     public static void show(Context context, int resId, int duration) {

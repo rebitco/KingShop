@@ -1,8 +1,8 @@
 package cn.king.kingshop.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -30,17 +30,18 @@ import cn.king.kingshop.widget.PasswordEditText;
  * Created by king on 2017/3/28.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @ViewInject(R.id.toolbar)
     private MyToolBar mToolbar;
 
     @ViewInject(R.id.et_telnum)
     private ClearEditext cetTelnum;
+
     @ViewInject(R.id.et_pwd)
     private PasswordEditText etPwd;
 
-    private OkHttpHelper mHttpHelp;
+    private OkHttpHelper mHttpHelp = OkHttpHelper.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         ViewUtils.inject(this);
 
         initToolbar();
-        mHttpHelp = OkHttpHelper.getInstance();
+
     }
 
     private void initToolbar() {
@@ -81,14 +82,14 @@ public class LoginActivity extends AppCompatActivity {
 
         String url = Contants.API.LOGIN;
         HashMap<String, Object> params = new HashMap<>(2);
-        params.put("telNum", userTelnum);
+        params.put("phone", userTelnum);
         params.put("password", DESUtil.encode(Contants.DES_KEY, userPwd));
         mHttpHelp.post(url, params, new SpotsCallback<LoginRespMsg<User>>(this) {
 
             @Override
             public void onSuccess(Response response, LoginRespMsg<User> userLoginRespMsg) {
-                KingApplication application = (KingApplication) getApplication();
-                application.putUser(userLoginRespMsg.getUser(), userLoginRespMsg.getToken());
+                KingApplication application = KingApplication.getInstance();
+                application.putUser(userLoginRespMsg.getUser(), userLoginRespMsg.getToken());//保存起来
 
                 if(application.getIntent() == null) {
                     setResult(RESULT_OK);
@@ -103,7 +104,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onError(Response response, int code, Exception e) {
 
             }
+
+            @Override
+            public void onTokenError(Response response, int code) {
+                super.onTokenError(response, code);
+            }
         });
+    }
+
+    @OnClick(R.id.tv_reg)
+    private void toReg(View v) {
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
 
     @Override
